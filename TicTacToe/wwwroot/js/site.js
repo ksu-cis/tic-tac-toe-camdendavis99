@@ -72,3 +72,36 @@ for (var i = 0; i < cells.length; i++) {
 }
 
 setTurn();
+
+var squares = document.getElementsByClassName("square");
+for (var i = 0; i < squares.length; i++) {
+    squares[i].addEventListener("dragstart", onDragStart);
+    squares[i].addEventListener("dragenter", onDragEnter);
+    squares[i].addEventListener("drop", onDrop);
+    squares[i].addEventListener("dragexit", onDragExit);
+}
+
+function onDragStart(event) {
+    console.log(event.target.dataset);
+    dragging = {
+        x: event.target.dataset.x,
+        y: event.target.dataset.y
+    }
+}
+
+function onDragEnter(event) {
+    if (event.target.children.length > 0) return;
+    if (event.target.classList.contains("red")) return;
+    if (event.target.classList.contains("checker")) return;
+    event.preventDefault();
+    event.target.style.backgroundColor = "yellow";
+}
+
+function onDrop(event) {
+    console.log(event);
+}
+
+function onDragExit(event) {
+    console.log("dragleave", event);
+    event.target.style.backgroundColor = null;
+}

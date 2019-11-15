@@ -8,7 +8,7 @@ namespace TicTacToe.Checkers
     public class Checker
     {
         public bool King = false;
-        public Color Color { get; }
+        public Color Color;
 
         public Checker(Color color)
         {

@@ -26,5 +26,22 @@ namespace TicTacToe.Checkers
                 Board[i, 7] = new Checker(Color.Red);
             }
         }
+
+        public string Serialize()
+        {
+            string state = Turn.ToString() + "\n";
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    Checker checker = Board[x, y];
+                    if (checker != null)
+                    {
+                        state += $"{checker.Color},{checker.King},{x},{y}\n";
+                    }
+                }
+            }
+            return state;
+        }
     }
 }

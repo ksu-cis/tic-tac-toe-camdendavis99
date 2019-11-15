@@ -11,9 +11,20 @@
     {
         @for (int x = 0; x < 8; x++)
         {
-            <div class="square @((x + y) % 2 == 1 ? "black" : "red")">
-
+            <div class="checkers_square @((x + y) % 2 == 1 ? "black" : "red")" dropzone="true">
+                @if (Model.Game.Board[x,y] != null)
+                {
+                    <div class="checker @Model.Game.Board[x,y].Color" data-x="@x" data-y="@y" draggable="true"></div>
+                }
             </div>
         }
     }
 </div>
+
+<form>
+    <input type="text" name="checkerX" />
+    <input type="text" name="checkerY" />
+    <input type="text" name="squareX" />
+    <input type="text" name="squareY" />
+    <input type="submit" value="Make a move"/>
+</form>

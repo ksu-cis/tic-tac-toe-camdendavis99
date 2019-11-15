@@ -33,7 +33,7 @@ body {
     grid-template-columns: repeat(8, 1fr);
 }
 
-#board > .square {
+#board > .checkers_square {
     border: 1px solid gray;
     width: 50px;
     height: 50px;
@@ -45,4 +45,12 @@ body {
 
 .black {
     background-color: black;
+}
+
+.checker {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid black;
 }

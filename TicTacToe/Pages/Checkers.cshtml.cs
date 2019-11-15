@@ -16,5 +16,12 @@ namespace TicTacToe.Pages
         {
             Game = new Game();
         }
+
+        public void OnPost(string state, int checkerX, int checkerY, int squareX, int squareY)
+        {
+            Game = new Game();
+            Game.Board[squareX, squareY] = Game.Board[checkerX, checkerY];
+            Game.Board[checkerX, checkerY] = null;
+        }
     }
 }

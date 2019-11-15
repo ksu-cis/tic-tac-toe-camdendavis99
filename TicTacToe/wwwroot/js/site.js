@@ -10,9 +10,13 @@ function setTurn() {
     turnElement.innerText = "It is player " + turn + "'s turn.";
 }
 
-function setWinner() {
+function setWinner(winner) {
     var turnElement = document.getElementById("turn");
-    turnElement.innerText = "Player " + turn + " wins!";
+    turnElement.innerText = "Player " + winner + " wins!";
+    var cells = document.getElementsByClassName("square");
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].removeEventListener("click", onClick);
+    }
 }
 
 function checkForWin() {
@@ -21,7 +25,7 @@ function checkForWin() {
     // Check rows for win
     for (var i = 0; i < 9; i += 3) {
         if (cells[0 + i].innerText !== "" && cells[0 + i].innerText === cells[1 + i].innerText && cells[1 + i].innerText === cells[2 + i].innerText) {
-            setWinner(cells[0 + i]);
+            setWinner(cells[0 + i].innerText);
             return true;
         }
     }
@@ -29,18 +33,18 @@ function checkForWin() {
     // Check columns for win
     for (var i = 0; i < 3; i++) {
         if (cells[0 + i].innerText !== "" && cells[0 + i].innerText === cells[3 + i].innerText && cells[3 + i].innerText === cells[6 + i].innerText) {
-            setWinner(cells[0 + i]);
+            setWinner(cells[0 + i].innerText);
             return true;
         }
     }
 
     // Check diagonals for win
     if (cells[0].innerText !== "" && cells[0].innerText === cells[4].innerText && cells[4].innerText === cells[8].innerText) {
-        setWinner(cells[0]);
+        setWinner(cells[0].innerText);
         return true;
     }   
     if (cells[2].innerText !== "" && cells[2].innerText === cells[4].innerText && cells[4].innerText === cells[6].innerText) {
-        setWinner(cells[2]);
+        setWinner(cells[2].innerText);
         return true;
     }    
 
